@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>All Expenses</h2>
+{% if expenses %}
+    <ul>
+    {% for exp in expenses %}
+        <li>
+            {{ exp.category }} - {{ exp.description }} - ₹{{ exp.amount }} - {{ exp.date.strftime('%Y-%m-%d %H:%M:%S') }}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No expenses recorded yet.</p>
+{% endif %}
+
+<a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+{% endblock %}

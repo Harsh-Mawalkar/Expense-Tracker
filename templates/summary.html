@@ -1,0 +1,20 @@
+<!-- templates/summary.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Expenses Summary</h2>
+
+{% for category, data in category_summary.items() %}
+    <h3>{{ category }} Expenses</h3>
+    <p><strong>Total Spent:</strong> ₹{{ data.total }}</p>
+
+    <h4>Expenses:</h4>
+    <ul>
+        {% for exp in data.expenses %}
+            <li>₹{{ exp.amount }} - {{ exp.description }} ({{ exp.date }})</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+<a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}
